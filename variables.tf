@@ -76,6 +76,10 @@ variable "resource_name_templates" {
     key_vault_name                      = "kv$${workload}$${environment}$${location_short}$${sequence}$${uniqueness}"
     storage_account_name                = "sto$${workload}$${environment}$${location_short}$${sequence}$${uniqueness}"
     user_assigned_managed_identity_name = "uami-$${workload}-$${environment}-$${location}-$${sequence}"
+    virtual_machine_name                = "vm-$${workload}-$${environment}-$${location}-$${sequence}"
+    network_interface_name              = "nic-$${workload}-$${environment}-$${location}-$${sequence}"
+    bastion_host_public_ip_name         = "pip-bas-$${workload}-$${environment}-$${location}-$${sequence}"
+    bastion_host_name                   = "bas-$${workload}-$${environment}-$${location}-$${sequence}"
   }
 }
 
@@ -96,4 +100,10 @@ variable "subnets" {
 variable "tags" {
   type        = map(string)
   description = "A map of tags to add to all resources"
+}
+
+variable "enable_encryption_at_host" {
+  type        = bool
+  description = "Enable encryption at host"
+  default     = false
 }
